@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Phishing Site Detector</title>
+  <style>
+    body {
+      width: 300px;
+      padding: 15px;
+      font-family: Arial, sans-serif;
+    }
+    .title {
+      text-align: center;
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #333;
+    }
+    .stats {
+      margin-top: 10px;
+    }
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      margin: 5px 0;
+    }
+    .toggle-container {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+    }
+    .toggle {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 24px;
+      margin-right: 10px;
+    }
+    .toggle input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 24px;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+    input:checked + .slider {
+      background-color: #2196F3;
+    }
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+    button {
+      width: 100%;
+      padding: 8px;
+      margin-top: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .status {
+      margin-top: 12px;
+      text-align: center;
+      font-weight: bold;
+    }
+    .safe {
+      color: #4CAF50;
+    }
+    .danger {
+      color: #f44336;
+    }
+    .warning {
+      color: #ff9800;
+    }
+    .feature-details {
+      margin-top: 15px;
+      border-top: 1px solid #ddd;
+      padding-top: 10px;
+    }
+    .feature-title {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .feature-list {
+      max-height: 150px;
+      overflow-y: auto;
+      border: 1px solid #eee;
+      padding: 8px;
+      font-size: 12px;
+    }
+    .feature-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 3px;
+    }
+    .feature-name {
+      flex: 1;
+    }
+    .feature-value {
+      flex: 0 0 30px;
+      text-align: right;
+    }
+    .feature-indicator {
+      flex: 0 0 15px;
+      text-align: center;
+      margin-left: 5px;
+    }
+    .positive {
+      color: #f44336;
+    }
+    .negative {
+      color: #4CAF50;
+    }
+    .version {
+      text-align: center;
+      font-size: 10px;
+      color: #888;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="title">Phishing Site Detector</div>
+  
+  <div class="toggle-container">
+    <label class="toggle">
+      <input type="checkbox" id="protection" checked>
+      <span class="slider"></span>
+    </label>
+    <span>Protection Active</span>
+  </div>
+  
+  <div class="stats">
+    <div class="stat-row">
+      <span>Sites Analyzed:</span>
+      <span id="analyzed-count">0</span>
+    </div>
+    <div class="stat-row">
+      <span>Phishing Sites Blocked:</span>
+      <span id="blocked-count">0</span>
+    </div>
+  </div>
+  
+  <button id="check-current">Check Current Site</button>
+  <p>Sites Analyzed: <span id="analyzed-count">0</span></p>
+  <p>Phishing Sites Blocked: <span id="blocked-count">0</span></p>
+  <p id="top-risk">No site checked yet</p>
+
+  
+  <div class="feature-details">
+    <div class="feature-title">Top Risk Factors:</div>
+    <div class="feature-list" id="feature-list">
+      <!-- Features will be inserted here by JavaScript -->
+    </div>
+  </div>
+  
+  <div class="version">Phishing Site Detector v1.0</div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
